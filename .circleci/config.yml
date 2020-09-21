@@ -7,11 +7,17 @@ jobs:
       - image: circleci/ruby:2.7.1
     steps:
       - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "eb:b4:e5:c0:ba:6d:56:76:1f:06:97:25:e0:98:0d:cb"
       - run:
           name: Install gem
           command: |
             gem install bundler
             bundle install --path vendor/bundle --jobs=4
+      - run:
+          name: Deploy application
+          command: bundle exec cap production deploy
 
 workflows:
   all:
