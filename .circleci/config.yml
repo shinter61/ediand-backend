@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs:
-  aws-cli: circleci/aws-cli@1.3.0
-
 jobs:
   deploy:
     working_directory: ~/ediand-backend
@@ -10,6 +7,8 @@ jobs:
       - image: circleci/ruby:2.7.1
     steps:
       - checkout
+      - run: sudo apt-get update && sudo apt-get install python3-pip groff-base
+      - run: sudo pip3 install awscli --ignore-installed six
       - add_ssh_keys:
           fingerprints:
             - "eb:b4:e5:c0:ba:6d:56:76:1f:06:97:25:e0:98:0d:cb"
