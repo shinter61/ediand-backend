@@ -13,3 +13,8 @@ jobs:
           command: |
             gem install bundler
             bundle install --path vendor/bundle --jobs=4
+
+workflows:
+  all:
+    jobs:
+      - deploy
