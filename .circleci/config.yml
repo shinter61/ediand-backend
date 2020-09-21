@@ -1,10 +1,16 @@
 version: 2.1
 
 jobs:
-  deploy:
+  setup:
     working_directory: ~/ediant-backend
     docker:
       - image: circleci/python:3.8.0
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
+  deploy:
+    working_directory: ~/ediant-backend
+    docker:
       - image: circleci/ruby:2.7.1
     steps:
       - checkout
@@ -26,13 +32,13 @@ jobs:
           paths:
             - vendor/bundle
       - run:
-          name: Install awscli
-          command: sudo pip install awscli
-      - run:
           name: Deploy application
           command: bash ./deploy.sh
 
 workflows:
   all:
     jobs:
-      - deploy
+      - setup
+      - deploy:
+          requires:
+            - setup
