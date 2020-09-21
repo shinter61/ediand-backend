@@ -1,15 +1,17 @@
 version: 2.1
 orbs:
-  ruby: circleci/ruby@0.1.2 
+  ruby: circleci/ruby@2.7.1
 
 jobs:
-  build:
+  deploy:
+    working_directory: ~/ediant-frontend
     docker:
-      - image: circleci/ruby:2.6.3-stretch-node
+      - image: circleci/ruby:2.7.1
     executor: ruby/default
     steps:
       - checkout
       - run:
-          name: Which bundler?
-          command: bundle -v
-      - ruby/bundle-install
+          name: Install gem
+          command: |
+            gem install bundler
+            bundle install --path vendor/bundle --jobs=4
