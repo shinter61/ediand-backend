@@ -27,7 +27,7 @@ set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} #{fetch(:rbenv_path)}/bin/r
 
 # Default value for :linked_files is []
 # append :linked_files, "config/database.yml"
-append :linked_files, "config/master.key"
+append :linked_files, "config/master.key", ".env"
 
 append :linked_dirs, '.bundle'
 
