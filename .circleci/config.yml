@@ -1,15 +1,9 @@
 version: 2.1
 
+orbs:
+  aws-cli: circleci/aws-cli@1.3.0
+
 jobs:
-  setup:
-    working_directory: ~/ediant-backend
-    docker:
-      - image: circleci/python:3.8.0
-    steps:
-      - checkout
-      - run:
-          name: Install awscli
-          command: sudo pip install awscli
   deploy:
     working_directory: ~/ediand-backend
     docker:
@@ -40,7 +34,4 @@ jobs:
 workflows:
   all:
     jobs:
-      - setup
-      - deploy:
-          requires:
-            - setup
+      - deploy
