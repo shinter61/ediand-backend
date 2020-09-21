@@ -4,8 +4,8 @@ jobs:
   deploy:
     working_directory: ~/ediant-backend
     docker:
-      - image: circleci/ruby:2.7.1
       - image: circleci/python:3.8.0
+      - image: circleci/ruby:2.7.1
     steps:
       - checkout
       - add_ssh_keys:
