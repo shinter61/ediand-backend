@@ -5,7 +5,6 @@ jobs:
     working_directory: ~/ediant-backend
     docker:
       - image: circleci/ruby:2.7.1
-    executor: ruby/default
     steps:
       - checkout
       - run:
