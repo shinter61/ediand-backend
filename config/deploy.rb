@@ -45,3 +45,12 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets"
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
+
+namespace :deploy do
+  desc 'Restart application'
+  task :restart do
+    invoke 'unicorn:restart'
+  end
+
+  after :publishing, :restart
+end
