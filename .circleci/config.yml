@@ -11,9 +11,6 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "eb:b4:e5:c0:ba:6d:56:76:1f:06:97:25:e0:98:0d:cb"
-      - run:
-          name: Install awscli
-          command: sudo pip install awscli
       - restore_cache:
           keys:
             - gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
@@ -28,6 +25,9 @@ jobs:
           key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
       - run:
           name: Deploy application
           command: bash ./deploy.sh
