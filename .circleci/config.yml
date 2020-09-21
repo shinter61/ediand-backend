@@ -11,7 +11,7 @@ jobs:
           name: Install awscli
           command: sudo pip install awscli
   deploy:
-    working_directory: ~/ediant-backend
+    working_directory: ~/ediand-backend
     docker:
       - image: circleci/ruby:2.7.1
     steps:
