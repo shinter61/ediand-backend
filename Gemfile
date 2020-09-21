@@ -30,6 +30,13 @@ gem 'dotenv-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+
+  # Ref: https://twin-t.com/rails%E3%81%A7%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92aws%E3%81%B8%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%99%E3%82%8B%E9%9A%9B%E3%81%AE%E3%82%A8%E3%83%A9%E3%83%BC/
+  gem 'ed25519'
+  gem 'bcrypt_pbkdf'
 end
 
 group :development do
