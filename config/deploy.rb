@@ -27,11 +27,12 @@ set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} #{fetch(:rbenv_path)}/bin/r
 
 # Default value for :linked_files is []
 # append :linked_files, "config/database.yml"
+append :linked_files, "config/master.key"
 
 append :linked_dirs, '.bundle'
 
 # Default value for linked_dirs is []
-# append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
