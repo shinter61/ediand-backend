@@ -5,11 +5,15 @@ jobs:
     working_directory: ~/ediant-backend
     docker:
       - image: circleci/ruby:2.7.1
+      - image: circleci/python:3.6.4
     steps:
       - checkout
       - add_ssh_keys:
           fingerprints:
             - "eb:b4:e5:c0:ba:6d:56:76:1f:06:97:25:e0:98:0d:cb"
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
       - restore_cache:
           keys:
             - gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
@@ -26,7 +30,7 @@ jobs:
             - vendor/bundle
       - run:
           name: Deploy application
-          command: bundle exec cap production deploy
+          command: bash ./deploy.sh
 
 workflows:
   all:
