@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: ediand_backend_production
-  username: ediand_backend
+  username: <%= ENV['EDIAND_BACKEND_DATABASE_NAME'] %>
   password: <%= ENV['EDIAND_BACKEND_DATABASE_PASSWORD'] %>
+  host: <%= ENV['EDIAND_BACKEND_DATABASE_HOST'] %>
