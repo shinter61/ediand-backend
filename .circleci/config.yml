@@ -13,7 +13,7 @@ jobs:
           name: Make ssh file
           command: |
             touch $HOME/.ssh/ediand_key_rsa
-            echo ${EC2_KEY} >> $HOME/.ssh/ediand_key_rsa
+            cat ${EC2_KEY} > $HOME/.ssh/ediand_key_rsa
       - restore_cache:
           keys:
             - gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
