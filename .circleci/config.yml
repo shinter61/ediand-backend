@@ -1,0 +1,40 @@
+version: 2.1
+
+jobs:
+  deploy:
+    working_directory: ~/ediand-backend
+    docker:
+      - image: circleci/ruby:2.7.1
+    steps:
+      - checkout
+      - run: sudo apt-get update && sudo apt-get install python3-pip groff-base
+      - run: sudo pip3 install awscli --ignore-installed six
+      - add_ssh_keys:
+          fingerprints:
+            - "b3:0f:aa:51:0b:e2:e5:8a:6b:d8:88:1e:80:f3:54:d6"
+      - restore_cache:
+          keys:
+            - gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache-v1-{{ arch }}-{{ .Branch }}
+            - gem-cache-v1
+      - run:
+          name: Install gem
+          command: |
+            gem install bundler
+            bundle install --path vendor/bundle --jobs=4
+      - save_cache:
+          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - run:
+          name: Deploy application
+          command: bash ~/ediand-backend/.circleci/deploy.sh
+
+workflows:
+  all:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only:
+                - master

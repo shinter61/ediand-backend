@@ -33,7 +33,7 @@ server '18.181.8.233', user: 'ediand', roles: %w{app web}
 # Feel free to add new variables to customise your setup.
 
 
-set :ssh_options, keys: '~/.ssh/ediand_key_rsa' 
+set :ssh_options, keys: '~/.ssh/id_rsa_b30faa510be2e58a6bd8881e80f354d6' 
 
 # Custom SSH Options
 # ==================
