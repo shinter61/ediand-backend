@@ -9,11 +9,9 @@ jobs:
       - checkout
       - run: sudo apt-get update && sudo apt-get install python3-pip groff-base
       - run: sudo pip3 install awscli --ignore-installed six
-      - run:
-          name: Make ssh file
-          command: |
-            touch $HOME/.ssh/ediand_key_rsa
-            cat ${EC2_KEY} > $HOME/.ssh/ediand_key_rsa
+      - add_ssh_keys:
+          fingerprints:
+            - "b3:0f:aa:51:0b:e2:e5:8a:6b:d8:88:1e:80:f3:54:d6"
       - restore_cache:
           keys:
             - gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}

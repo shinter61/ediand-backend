@@ -2,7 +2,7 @@
 
 IP=`curl -s ifconfig.me`
 
-chmod 0600 ~/.ssh/ediand_key_rsa
+chmod 0600 ~/.ssh/id_rsa_b30faa510be2e58a6bd8881e80f354d6
 
 aws configure set region ap-northeast-1
 
