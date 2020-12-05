@@ -15,5 +15,5 @@ ADD ./Gemfile $APP_ROOT/Gemfile
 ADD ./Gemfile.lock $APP_ROOT/Gemfile.lock
 
 # Gemfileのbundle install
-RUN bundle install
+RUN bundle install --path vendor/bundle
 ADD . $APP_ROOT
