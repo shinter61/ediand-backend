@@ -29,3 +29,4 @@
 .env
 
 /vendor/**
+/containers_data/**
