@@ -23,7 +23,7 @@ services:
     environment:
       RAILS_ENV: development
     volumes:
-      - .:/ediand_backend
+      - .:/ediand_backend:cached
     ports:
       - "3000:3000"
     links:
