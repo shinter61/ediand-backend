@@ -8,6 +8,8 @@ services:
       MYSQL_DATABASE: root
     ports:
       - "3306:3306"
+    volumes:
+      - ./containers_data/mysql:/var/lib/mysql
 
   web:
     container_name: ediand_backend_rails
