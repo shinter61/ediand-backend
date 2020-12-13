@@ -6,5 +6,7 @@ Rails.application.routes.draw do
 
   namespace :v1 do
     mount_devise_token_auth_for 'User', at: 'auth'
+
+    get 'users/by_token', to: 'users#by_token'
   end
 end
