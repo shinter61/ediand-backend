@@ -1,24 +1,12 @@
-# README
+## EDIAND BACKEND
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### デプロイ
 
-Things you may want to cover:
+masterにマージされる時に行われる
 
-* Ruby version
+nginx.confを書き換えた時は、ec2のものを直接書き換える必要がある。
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+cd /etc/nginx/conf.d
+sudo vi ediand-backend.conf
+```
